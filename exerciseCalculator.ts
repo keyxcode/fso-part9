@@ -1,3 +1,5 @@
+import parseArguments from "./utils/exercise/parseArguments";
+
 interface CalculationValues {
   periodLength: number;
   trainingDays: number;
@@ -40,4 +42,15 @@ const calculateExercises = (
   };
 };
 
-console.log(calculateExercises(2, [3, 0, 2, 4.5, 0, 3, 1]));
+// console.log(calculateExercises(2, [3, 0, 2, 4.5, 0, 3, 1]));
+
+try {
+  const { targetHours, dailyHours } = parseArguments(process.argv);
+  console.log(calculateExercises(targetHours, dailyHours));
+} catch (error: unknown) {
+  let errorMessage = "Something bad happened.";
+  if (error instanceof Error) {
+    errorMessage += " Error: " + error.message;
+  }
+  console.log(errorMessage);
+}
