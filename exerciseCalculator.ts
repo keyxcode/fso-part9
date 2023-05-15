@@ -9,8 +9,8 @@ interface CalculationValues {
 }
 
 const calculateExercises = (
-  dailyHours: number[],
-  targetHours: number
+  targetHours: number,
+  dailyHours: number[]
 ): CalculationValues => {
   const periodLength = dailyHours.length;
   const trainingDays = dailyHours.filter((hour) => hour > 0).length;
@@ -40,4 +40,4 @@ const calculateExercises = (
   };
 };
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+console.log(calculateExercises(2, [3, 0, 2, 4.5, 0, 3, 1]));
